@@ -13,6 +13,7 @@ rm /usr/local/lib/python3.6/dist-packages/ipsetpy/wrapper.py
 cp ipsetpy/wrapper.py /usr/local/lib/python3.6/dist-packages/ipsetpy/wrapper.py
 rm -R ipsetpy
 mv iprange /usr/local/bin/iprange
+chmod +x /usr/local/bin/iprange
 mkdir /opt/phalanx
 mv *.py /opt/phalanx
 mv *.json /opt/phalanx
