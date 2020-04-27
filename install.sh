@@ -17,14 +17,21 @@ chmod +x /usr/local/bin/iprange
 mkdir /opt/phalanx
 mv *.py /opt/phalanx
 mv *.json /opt/phalanx
-python3 /opt/phalanx/main.py -S
-python3 /opt/phalanx/main.py -u
-cp phalanx-startup.service /lib/systemd/system
-systemctl daemon-reload
-systemctl enable phalanx-startup.service
 cd ../
 rm -R Phalanx
-
+clear
+echo "Adding crontab entry to run script on boot"
+crontab -l | { cat; echo "@reboot python3 /opt/phalanx/main.py&"; } | crontab -
+echo "Adding crontab entry to update block lists daily at 1:00am"
+crontab -l | { cat; echo "0 1 * * * python3 /opt/phalanx/main.py -u&"; } | crontab -
+echo "Adding crontab entry to update firewall with new blocklist daily at 1:30am"
+crontab -l | { cat; echo "30 1 * * * python3 /opt/phalanx/main.py&"; } | crontab -
+echo
+echo
+echo
+python3 /opt/phalanx/main.py -S
+echo
+python3 /opt/phalanx/main.py -u
 echo
 echo
 echo "Install complete!"
