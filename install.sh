@@ -5,7 +5,7 @@ echo "Updating package manager"
 run 'apt update'
 echo "Updating package manager"
 apt upgrade -y
-apt install -y -q python3-pip
+apt install -y -q python3-pip ipset
 pip3 install requests
 pip3 install ipsetpy
 git clone https://github.com/sanyi/ipsetpy.git
@@ -25,7 +25,11 @@ systemctl enable phalanx-startup.service
 cd ../
 rm -R Phalanx
 
+echo
+echo
 echo "Install complete!"
-echo "To update the block list run python3 main.py -u"
-echo "To update the firewall rules run python3 main.py"
+echo "To update the block list run python3 /opt/phalanx/main.py -u"
+echo
+echo "To update the firewall rules run python3 /opt/phalanx/main.py"
+echo
 echo "These should be setup as cron jobs for automated updates"
