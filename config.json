@@ -1,0 +1,33 @@
+{
+    "ALLOW_ICMP": "True",
+    "MAN": "",
+    "MAN_Dst_Ports": [
+        [
+            "tcp",
+            "22"
+        ]
+    ],
+    "MAN_Src_Ports": [
+        [
+            "udp",
+            "53"
+        ],
+        [
+            "tcp",
+            "80"
+        ],
+        [
+            "tcp",
+            "443"
+        ]
+    ],
+    "Setup_Ran": "False",
+    "WAN0": "",
+    "WAN1": "",
+    "cisco_talos": "https://talosintelligence.com/documents/ip-blacklist",
+    "dshield": "http://feeds.dshield.org/block.txt",
+    "ip_block": "ip_blocklist.json",
+    "log": "phalanx.log",
+    "otx": "https://reputation.alienvault.com/reputation.generic",
+    "path": "/opt/phalanx"
+}
