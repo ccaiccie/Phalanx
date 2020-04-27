@@ -23,6 +23,8 @@ ln -s /opt/phalanx/main.py /usr/local/bin/main.py
 phalanx-startup.service /lib/systemd/system
 systemctl daemon-reload
 systemctl enable phalanx-startup.service
+cd ../
+rm -R Phalanx
 
 echo "Install complete!"
 echo "To update the block list run python3 main.py -u"
