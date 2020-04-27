@@ -9,8 +9,8 @@ apt install -y -q python3-pip
 pip3 install requests
 pip3 install ipsetpy
 git clone https://github.com/sanyi/ipsetpy.git
-rm /usr/local/lib/python3.6/dist-packages/ipsetpy/wrapper.py
-cp ipsetpy/wrapper.py /usr/local/lib/python3.6/dist-packages/ipsetpy/wrapper.py
+mv /usr/local/lib/python3.8/dist-packages/ipsetpy/wrapper.py /usr/local/lib/python3.8/dist-packages/ipsetpy/wrapper.py.old
+cp ipsetpy/wrapper.py /usr/local/lib/python3.8/dist-packages/ipsetpy/wrapper.py
 rm -R ipsetpy
 mv iprange /usr/local/bin/iprange
 chmod +x /usr/local/bin/iprange
