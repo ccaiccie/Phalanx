@@ -21,7 +21,6 @@ if [ "$dist" == "apt" ]; then
    run 'apt update'
    echo "Updating package manager"
    run 'apt upgrade -y'
-   run 'apt install -y -q python3 git'
    run '/usr/local/bin/python3 -m pip install pip3'
    run 'pip3 install requests'
    run 'pip3 install ipsetpy'
