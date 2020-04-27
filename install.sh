@@ -5,8 +5,7 @@ echo "Updating package manager"
 run 'apt update'
 echo "Updating package manager"
 apt upgrade -y
-apt install -y -q
-python3-pip
+apt install -y -q python3-pip
 pip3 install requests
 pip3 install ipsetpy
 git clone https://github.com/sanyi/ipsetpy.git
