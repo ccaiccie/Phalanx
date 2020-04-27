@@ -19,7 +19,7 @@ mv *.py /opt/phalanx
 mv *.json /opt/phalanx
 python3 /opt/phalanx/main.py -S
 python3 /opt/phalanx/main.py -u
-phalanx-startup.service /lib/systemd/system
+cp phalanx-startup.service /lib/systemd/system
 systemctl daemon-reload
 systemctl enable phalanx-startup.service
 cd ../
