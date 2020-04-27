@@ -33,10 +33,11 @@ python3 /opt/phalanx/main.py -S
 echo
 python3 /opt/phalanx/main.py -u
 echo
+python3 /opt/phalanx/main.py
 echo
 echo "Install complete!"
 echo "To update the block list run python3 /opt/phalanx/main.py -u"
 echo
 echo "To update the firewall rules run python3 /opt/phalanx/main.py"
 echo
-echo "These should be setup as cron jobs for automated updates"
+echo "To change cron automated tasks run: sudo crontab -e"
