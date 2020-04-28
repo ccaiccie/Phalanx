@@ -21,7 +21,7 @@ cd ../
 rm -R Phalanx
 clear
 echo "Adding crontab entry to run script on boot"
-crontab -l | { cat; echo "@reboot python3 /opt/phalanx/main.py&"; } | crontab -
+crontab -l | { cat; echo "@reboot python3 /opt/phalanx/main.py -l&"; } | crontab -
 echo "Adding crontab entry to update block lists daily at 1:00am"
 crontab -l | { cat; echo "0 1 * * * python3 /opt/phalanx/main.py -u&"; } | crontab -
 echo "Adding crontab entry to update firewall with new blocklist daily at 1:30am"
