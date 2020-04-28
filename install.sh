@@ -32,7 +32,7 @@ crontab -l | { cat; echo "30 1 * * * python3 /opt/phalanx/main.py&"; } | crontab
 echo
 echo
 echo
-python3 /opt/phalanx/main.py -S
+python3 /opt/phalanx/main.py -s
 echo
 python3 /opt/phalanx/main.py -u
 echo
