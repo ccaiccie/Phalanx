@@ -18,10 +18,9 @@ mkdir /opt/phalanx
 mv *.py /opt/phalanx
 mv *.json /opt/phalanx
 chmod 644 *.service
-mv *.service /etc/systemd/system/
+mv phalanx.service /etc/systemd/system/
 systemctl daemon-reload
-systemctl enable phalanx-ipset.service
-systemctl enable phalanx-interface.service
+systemctl enable phalanx.service
 cd ../
 rm -R Phalanx
 clear
@@ -36,7 +35,7 @@ python3 /opt/phalanx/main.py -s
 echo
 python3 /opt/phalanx/main.py -u
 echo
-python3 /opt/phalanx/main.py
+systemctl start phalanx.service
 echo
 echo "Install complete!"
 echo "To update the block list run python3 /opt/phalanx/main.py -u"
