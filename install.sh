@@ -24,18 +24,20 @@ systemctl enable phalanx.service
 cd ../
 rm -R Phalanx
 clear
-echo "Adding crontab entry to update block lists daily at 1:00am"
-crontab -l | { cat; echo "0 1 * * * python3 /opt/phalanx/main.py -u&"; } | crontab -
-echo "Adding crontab entry to update firewall with new blocklist daily at 1:30am"
-crontab -l | { cat; echo "30 1 * * * python3 /opt/phalanx/main.py&"; } | crontab -
-echo
-echo
-echo
 python3 /opt/phalanx/main.py -s
 echo
 python3 /opt/phalanx/main.py -u
 echo
-systemctl start phalanx.service
+echo "Adding service to crontab to start on reboot"
+echo "Adding crontab entry to update block lists daily at 1:00am"
+crontab -l | { cat; echo "@reboot systemctl start phalanx.service&"; } | crontab -
+echo "Adding crontab entry to update block lists daily at 1:00am"
+crontab -l | { cat; echo "0 1 * * * python3 /opt/phalanx/main.py -u&"; } | crontab -
+echo "Adding crontab entry to update firewall with new blocklist daily at 1:30am"
+crontab -l | { cat; echo "30 1 * * * python3 /opt/phalanx/main.py&"; } | crontab -
+systemctl start phalanx.service&
+echo
+echo
 echo
 echo "Install complete!"
 echo "To update the block list run python3 /opt/phalanx/main.py -u"
