@@ -1,6 +1,0 @@
-[Unit]
-Description=Setup Initial Phalanx ipset rules
-
-[Service]
-# Command to execute when the service is started
-ExecStart=/usr/bin/python3 /opt/phalanx/main.py
