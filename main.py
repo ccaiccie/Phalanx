@@ -15,8 +15,10 @@ run_time = str(now.strftime("%m/%d/%Y-%H:%M"))
 parser = argparse.ArgumentParser(prog="Phalanx", description="Firewall automation program that builds a transparent \
                                 firewall using publicly available threat feeds.")
 
-parser.add_argument("-S", "--setup", dest="setup", \
+parser.add_argument("-s", "--setup", dest="setup", \
                     help="Setup configuration file", action="store_true", default=False)
+parser.add_argument("-l", "--load-rules", dest="load_rules", \
+                    help="Load Default Rules.", action="store_true", default=False)
 parser.add_argument("-u", "--update", dest="update", \
                     help="Update Block-list file.", action="store_true", default=False)
 parser.add_argument("-v", "--verbosity", dest="verbosity", \
@@ -113,13 +115,12 @@ elif args.update is True:
         json.dump(compressed_list, file, sort_keys=True, indent=4)
         file.close()
 
-else:
+elif args.load_rules is True:
     for interface in ["WAN0", "WAN1", "MAN"]:
         if NetworkSetup(log_level).check_int_names(interface) is None:
             NetworkSetup(log_level).rename_int_name(config[interface], interface)
     if NetworkSetup(log_level).check_int_names("br0") is None:
         NetworkSetup(log_level).bridge_setup_interfaces("WAN0", "WAN1")
-
     FirewallSetup(log_level).setup_logging_chain()
     FirewallSetup(log_level).reset_chain("INPUT")
     FirewallSetup(log_level).set_management_icmp(config["ALLOW_ICMP"])
@@ -128,6 +129,8 @@ else:
     for port in config["MAN_Src_Ports"]:
         FirewallSetup(log_level).set_management_ports(port[0], port[1], "source")
     FirewallSetup(log_level).set_management_default_drop()
+
+else:
     ip_block_list = config["path"] + "/" + config["ip_block"]
     with open(ip_block_list, "r") as file:
         ips_and_cidrs = json.load(file)
