@@ -3,5 +3,5 @@ Type=oneshot
 Description=Setup Phalanx
 
 [Service]
-ExecStart=/usr/bin/python3 /opt/phalanx/main.py -l
+ExecStartPre=/usr/bin/python3 /opt/phalanx/main.py -l
 ExecStart=/usr/bin/python3 /opt/phalanx/main.py
