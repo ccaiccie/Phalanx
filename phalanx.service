@@ -1,7 +1,10 @@
 [Unit]
-Type=oneshot
 Description=Setup Phalanx
 
 [Service]
+Type=oneshot
 ExecStartPre=/usr/bin/python3 /opt/phalanx/main.py -l
 ExecStart=/usr/bin/python3 /opt/phalanx/main.py
+
+[Install]
+WantedBy=multi-user.target
