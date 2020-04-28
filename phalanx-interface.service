@@ -1,0 +1,7 @@
+[Unit]
+Description=Setup Phalanx Interfaces
+ARG1=-l
+
+[Service]
+# Command to execute when the service is started
+ExecStart=/usr/bin/python3 /opt/phalanx/main.py $ARG1
